@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>New Title</h2>
+<mat-dialog-content class="mat-typography" style="display: flex;flex-direction: column;" [formGroup]="form">
+  <mat-form-field style="width: 20rem">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Author</mat-label>
+    <input matInput formControlName="author">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Rating</mat-label>
+    <input matInput formControlName="rating">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>RatingCount</mat-label>
+    <input matInput formControlName="ratingCount">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Series</mat-label>
+    <input matInput formControlName="series">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput formControlName="description">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Page Count</mat-label>
+    <input matInput formControlName="pageCount">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Genre</mat-label>
+    <input matInput formControlName="genres">
+  </mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button [mat-dialog-close]="result.emit(form.value)">Add Book</button>
+</mat-dialog-actions>
+
