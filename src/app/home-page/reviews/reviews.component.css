@@ -1,0 +1,14 @@
+.cardReview
+{
+  margin-left:20rem;
+  display: inline-flex;
+
+
+}
+.reviews
+{
+  width:25rem;
+  height:25rem;
+  margin: 1rem;
+  background-color:#F4F1EA;
+}

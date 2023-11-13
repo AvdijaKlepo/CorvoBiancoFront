@@ -1,0 +1,54 @@
+/** Header **/
+.Header
+{
+  background-color: black;
+  color: white;
+  height:3rem;
+  font-family: "Century Gothic", serif;
+}
+.Header:hover
+{
+  cursor: pointer;
+}
+.HeaderItems
+{
+  display: flex;
+  justify-content: center;
+  padding-top: 0.6rem;
+}
+h1
+{
+  padding-inline: 0.5rem;
+}
+
+/** Navigation Bar **/
+.NavigationBar
+{
+  background-color: #F4F1EA;
+  font-family: "Century Gothic", serif
+}
+.NavigationBarRow
+{
+  padding-inline:22rem;
+}
+.NavigationBarLinks
+{
+  font-size: 1rem;
+  padding-inline:3rem;
+  padding-top: 0.1rem;
+}
+.Title
+{
+  font-size:2rem;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+  padding-inline:0.5rem;
+}
+div{
+  display:flex;
+}
+
+
