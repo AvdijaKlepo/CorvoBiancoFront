@@ -6,6 +6,7 @@ import {RouterOutlet} from "@angular/router";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HomePageComponent} from "./home-page/home-page.component";
 import {HttpClientModule} from "@angular/common/http";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {HttpClientModule} from "@angular/common/http";
     RouterOutlet,
     BrowserAnimationsModule,
     HomePageComponent,
-    HttpClientModule
+    HttpClientModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

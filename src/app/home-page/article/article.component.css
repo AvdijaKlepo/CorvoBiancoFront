@@ -8,7 +8,7 @@
 {
   margin-left:18.5rem;
   background-color:#F4F1EA;
-  width:59.8rem;
+  width:53.8rem;
   margin-top: 1rem;
 
 }
@@ -20,8 +20,10 @@
 }
 .topArticleLinks
 {
+  display:flex;
+  flex-direction: column;
   padding-left:1rem;
-  padding-top:5rem;
+  padding-top:3rem;
 }
 a
 {

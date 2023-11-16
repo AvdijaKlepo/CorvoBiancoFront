@@ -11,6 +11,8 @@
 
 
 
+
+
 <div class="Books" style="font-family:'Century Gothic',serif">
   <mat-card class="cardBook"  style="width: 14.5rem;border-radius: 5%" *ngFor="let b of books">
     <!--<img mat-card-xl-image src="assets/thebladeitself.jpg" alt="bladeitself" style="width:14.5rem;height:19rem;"> -->
@@ -26,7 +28,7 @@
           <mat-icon>star</mat-icon>
         </p>
         <p style="padding-top: 0.2rem;padding-left: 0.5rem;">{{b.rating}} • {{b.ratingCount}}</p></div>
-      <button mat-raised-button style="margin-left: 2.3rem;width: 8rem" (click)="deleteBook(b.id)">Delete</button>
+      <button mat-raised-button style="margin-left: 2.3rem;width: 8rem" (click)="DeleteBook(b.id)">Delete</button>
       <button mat-raised-button style="margin-left: 2.3rem;width: 8rem;margin-top: 1rem">Edit</button>
     </mat-card-content>
   </mat-card>
