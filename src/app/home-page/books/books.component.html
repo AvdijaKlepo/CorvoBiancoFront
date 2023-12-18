@@ -1,35 +1,35 @@
 <div style="display:flex;">
   <h1 style="font-family:'Century Gothic',serif;margin-left:20rem;padding-top: 2rem">Fantasy</h1>
 
-  <button mat-raised-button style="background-color:#F4F1EA;margin-left:70rem;margin-top: 2rem;"
-  (click)="openAddBookDialog()">
-    Add Book
-  </button>
+
 </div>
 
 
-
-
-
-
-
 <div class="Books" style="font-family:'Century Gothic',serif">
-  <mat-card class="cardBook"  style="width: 14.5rem;border-radius: 5%" *ngFor="let b of books">
-    <!--<img mat-card-xl-image src="assets/thebladeitself.jpg" alt="bladeitself" style="width:14.5rem;height:19rem;"> -->
-    <mat-card-content>
-      <p style="padding-top: 1rem;font-size:large">
-        {{b.title}}
-      </p>
-      <p style="font-size: larger">
-        {{b.author}}
-      </p>
-      <div style="display: flex">
-        <p>
-          <mat-icon>star</mat-icon>
-        </p>
-        <p style="padding-top: 0.2rem;padding-left: 0.5rem;">{{b.rating}} • {{b.ratingCount}}</p></div>
-      <button mat-raised-button style="margin-left: 2.3rem;width: 8rem" (click)="DeleteBook(b.id)">Delete</button>
-      <button mat-raised-button style="margin-left: 2.3rem;width: 8rem;margin-top: 1rem">Edit</button>
-    </mat-card-content>
-  </mat-card>
+
+  @for (b of books; track b.id)
+  {
+        <mat-card class="cardBook" style="width: 14.5rem;border-radius: 5%" >
+          <a routerLink="/book-details/{{b.id}}" style="text-decoration: none;color: black">
+            <img mat-card-xl-image src="{{b.bookCover}}" alt="bladeitself" style="width:14.5rem;height:19rem;">
+            <mat-card-content>
+              <p style="padding-top: 1rem;font-size:large">
+                {{b.title}}
+              </p>
+              <p style="font-size: larger">
+                {{b.author}}
+              </p>
+              <div style="display: flex">
+                <p>
+                  <mat-icon>star</mat-icon>
+                </p>
+                <p style="padding-top: 0.2rem;padding-left: 0.5rem;">{{b.rating}} • {{b.ratingCount}}</p></div>
+            </mat-card-content>
+
+          </a>
+          <button mat-raised-button style="margin-left: 3.5rem;width: 8rem;margin-bottom: 1rem;margin-top: -1.5rem" (click)="DeleteBook(b.id)">Delete
+          </button>
+        </mat-card>
+  }
+
 </div>

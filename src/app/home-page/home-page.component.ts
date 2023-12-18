@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {NavBarComponent} from "./nav-bar/nav-bar.component";
+import {NavBarComponent} from "../nav-bar/nav-bar.component";
 import {ArticleComponent} from "./article/article.component";
 import {BooksComponent} from "./books/books.component";
 import {ReviewsComponent} from "./reviews/reviews.component";

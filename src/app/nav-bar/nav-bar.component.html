@@ -18,8 +18,9 @@
         <a href="" >Home</a>
         <a href="">My Books</a>
         <a href="">Community</a>
-        <a href="">Authors</a>
+        <a routerLink="author">Authors</a>
       </div>
+
     </div>
 
       <mat-form-field class="SearchBar" style="padding-top: 1.2rem;height: 4.5rem;width: 20rem;margin-left: 7rem">
@@ -29,7 +30,16 @@
         <input class="SearchInput" type="text" matInput placeholder="Book">
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
-      <button mat-raised-button style="height: 2.5rem;width: 6rem;margin-left: 1rem; background-color: #730505;color:#fde9d4; font-family: 'Century Gothic',serif">Sign Up</button>
+      <button mat-raised-button style="height: 2.5rem;width: 8rem;margin-left: 1rem; background-color: #730505;color:#fde9d4; font-family: 'Century Gothic',serif">Sign Up</button>
+    <mat-form-field style="margin-top: 1rem;margin-left: 3rem;padding-top: .5rem;height: 4.5rem">
+      <mat-label>Admin</mat-label>
+      <mat-select>
+        <mat-option (click)="openAddAuthorDialog()">Add Author</mat-option>
+        <mat-option (click)="openAddGenreDialog()">Add Genre</mat-option>
+        <mat-option (click)="openAddSeriesDialog()">Add Series</mat-option>
+        <mat-option (click)="openAddBookDialog()">Add Book</mat-option>
+      </mat-select>
+    </mat-form-field>
 
   </mat-toolbar-row>
 </mat-toolbar>

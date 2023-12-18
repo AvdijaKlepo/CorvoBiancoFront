@@ -5,34 +5,44 @@
     <mat-label>Title</mat-label>
     <input matInput formControlName="title">
   </mat-form-field>
+
   <mat-form-field style="width: 20rem">
     <mat-label>Author</mat-label>
-    <input matInput formControlName="author">
+    <mat-select formControlName="authorId">
+      @for (author of authors; track author.id) {
+        <mat-option [value]="author.id">{{author.firstName}} {{author.lastName}}</mat-option>
+      }
+    </mat-select>
   </mat-form-field>
-  <mat-form-field style="width: 20rem">
-    <mat-label>Rating</mat-label>
-    <input matInput formControlName="rating">
-  </mat-form-field>
-  <mat-form-field style="width: 20rem">
-    <mat-label>RatingCount</mat-label>
-    <input matInput formControlName="ratingCount">
-  </mat-form-field>
+
   <mat-form-field style="width: 20rem">
     <mat-label>Series</mat-label>
-    <input matInput formControlName="series">
+    <mat-select formControlName="series">
+      @for(serial of series; track serial.id){
+        <mat-option  [value]="serial.id">{{serial.seriesName}}</mat-option>
+      }
+    </mat-select>
   </mat-form-field>
+
   <mat-form-field style="width: 20rem">
-    <mat-label>Description</mat-label>
-    <input matInput formControlName="description">
+    <mat-label>Textarea</mat-label>
+    <textarea matInput formControlName="description"></textarea>
   </mat-form-field>
+
   <mat-form-field style="width: 20rem">
     <mat-label>Page Count</mat-label>
     <input matInput formControlName="pageCount">
   </mat-form-field>
+
   <mat-form-field style="width: 20rem">
     <mat-label>Genre</mat-label>
-    <input matInput formControlName="genres">
+    <mat-select formControlName="genreId" >
+      @for(genre of genres; track genre.id){
+        <mat-option  [value]="genre.id">{{genre.genre}}</mat-option>
+      }
+    </mat-select>
   </mat-form-field>
+
   <mat-form-field style="width: 20rem">
     <mat-label>Published</mat-label>
     <input matInput [matDatepicker]="picker" formControlName="published">

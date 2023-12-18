@@ -1,0 +1,24 @@
+
+
+<div class="Authors" style="font-family:'Century Gothic',serif">
+<!-- TODO za sad radi ali moglo bi da ne radi-->
+  @for (author of authors; track author.id)
+  {
+    <mat-card class="cardAuthor" style="width: 14.5rem;border-radius: 5%" >
+      <a routerLink="/book-details/{{author.id}}" style="text-decoration: none;color: black">
+        <img mat-card-xl-image src="{{author.profilePicture}}" alt="bladeitself" style="width:14.5rem;height:19rem;">
+        <mat-card-content>
+          <p style="padding-top: 1rem;font-size:large;text-align: center">
+            {{author.firstName}} {{author.lastName}}
+          </p>
+          <button mat-raised-button style="margin-left: 2.5rem;width: 8rem;margin-bottom:0.5rem;margin-top:1.5rem" (click)="deleteAuthor(author.id)">Delete
+          </button>
+
+        </mat-card-content>
+
+      </a>
+
+    </mat-card>
+  }
+
+</div>

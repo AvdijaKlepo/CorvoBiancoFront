@@ -1,0 +1,37 @@
+<ng-container *ngIf="bookDetails"> <!-- napravi getter-->
+  <div class="bookDetails">
+
+    <!-- BookCover-->
+    <div class="bookCover">
+      <img ngSrc="{{bookDetails.bookCover}}" width="200" height="300" alt="BookCover"
+           style="border-bottom-right-radius: 5%;border-top-right-radius: 5%;">
+      <div class="detailButtons">
+        <button mat-raised-button style="background-color: #F4F1EA">Currently reading</button>
+        <button mat-raised-button style="margin-top: 1rem;background-color: #F4F1EA">Buy on CorvoBianco</button>
+      </div>
+    </div>
+
+    <!-- Info-->
+
+    <div class="bookInfo" style="font-family: 'Century Gothic'">
+      <h2 style="font-weight: lighter">{{bookDetails.series}}</h2>
+      <h1 style="font-weight: normal;font-size: xx-large">{{bookDetails.title}}</h1>
+      <span style="font-size: larger;font-weight: lighter">{{bookDetails.author}}</span>
+      <h1>{{bookDetails.rating}}  • {{bookDetails.ratingCount}}</h1>
+      <p style="width: 60rem;font-size: larger;white-space: pre-wrap">{{bookDetails.description | slice:sliceOptions.start:sliceOptions.end}}</p>
+      <div *ngIf="bookDetails.description.length>=sliceOptions.default">
+        <span (click)="seeMore($event)">See more</span>
+      </div>
+      <br>
+      <span style="font-size: larger;font-weight: lighter">Genre: {{bookDetails.genres}}</span>
+      <p style="font-size: larger;font-weight: lighter">{{bookDetails.pageCount}} pages</p>
+      <p style="font-size: larger;font-weight: lighter">First Published {{bookDetails.published | date}}</p>
+    </div>
+    <!-- Book Details-->
+  </div>
+</ng-container>
+
+
+
+
+

@@ -1,6 +1,13 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {AddBookRequest, BookGetBookHomePageResponse, GetBookHomePageResponse} from "./home-page.model";
+import {
+  AddBookRequest,
+  AddGenreRequest, AddSeriesRequest,
+  GetBooksResponse,
+  GetGenreResponse,
+  GetSeriesResponse
+} from "./home-page.model";
+import {GetAuthorResponse} from "../author/author.models";
 
 
 @Injectable({
@@ -13,7 +20,7 @@ export class HomePageService {
 
   GetBooksHomePage()
   {
-    return this.httpClient.get<GetBookHomePageResponse>(
+    return this.httpClient.get<GetBooksResponse>(
       `${this.apiUlr}GetBookHomePage`
     );
   }
@@ -32,6 +39,41 @@ export class HomePageService {
       book
     );
   }
+  GetAuthors()
+  {
+    return this.httpClient.get<GetAuthorResponse>(
+      `${this.apiUlr}GetAuthors`
+    );
+  }
+  GetSeries()
+  {
+    return this.httpClient.get<GetSeriesResponse>(
+      `${this.apiUlr}GetSeries`
+    )
+  }
+
+  GetGenre()
+  {
+    return this.httpClient.get<GetGenreResponse>(
+      `${this.apiUlr}Genre/GetGenres`
+    );
+  }
+
+  AddGenre(genre:AddGenreRequest)
+  {
+    return this.httpClient.post(
+      `${this.apiUlr}AddGenre`,
+      genre
+    );
+  }
+  AddSeries(series:AddSeriesRequest)
+  {
+    return this.httpClient.post(
+      `${this.apiUlr}AddSeries`,
+      series
+    );
+  }
+
 
 
 }
