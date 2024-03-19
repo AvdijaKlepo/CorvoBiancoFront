@@ -1,0 +1,26 @@
+@if(articleDetail)
+{
+<ng-container>
+  <div class="article">
+    <h1 style="padding-top: 1rem">{{ articleDetail.title }}</h1>
+    <h2 style="font-weight: lighter">{{ articleDetail.posted |date }}</h2>
+    <img ngSrc="{{articleDetail.articleImage}}" width="860" height="368">
+    <p style="width: 101%;font-size: larger;white-space: pre-wrap">{{ articleDetail.articleDescription }}</p>
+  </div>
+</ng-container>
+}
+
+@if(articleDetail)
+{
+@for(aD of articleDetail.books; track aD.id)
+{
+  <ng-container>
+    <div class="article">
+      <h1 style="padding-top: 1rem">{{ aD.author }}</h1>
+      <h2 style="font-weight: lighter">{{ aD.title |date }}</h2>
+      <img ngSrc="{{aD.bookCover}}" width="860" height="368">
+      <p style="width: 101%;font-size: larger;white-space: pre-wrap">{{ aD.pageCount }}</p>
+    </div>
+  </ng-container>
+}
+}

@@ -13,11 +13,13 @@ import {HomePageService} from "../home-page/home-page.service";
 import {AddAuthorsComponent} from "../author/add-authors/add-authors.component";
 import {AddGenreComponent} from "../home-page/add-genre/add-genre.component";
 import {AddSeriesComponent} from "../home-page/add-series/add-series.component";
+import {MatMenuModule} from "@angular/material/menu";
+import {AddArticleComponent} from "../home-page/add-article/add-article.component";
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports: [CommonModule, MatToolbarModule, MatIconModule, MatInputModule, MatButtonModule, RouterLink, MatSelectModule, FormsModule],
+  imports: [CommonModule, MatToolbarModule, MatIconModule, MatInputModule, MatButtonModule, RouterLink, MatSelectModule, FormsModule, MatMenuModule],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css'
 })
@@ -41,6 +43,14 @@ export class NavBarComponent {
   }
 
   openAddBookDialog() {
-    const dialogRef = this.dialog.open(AddBookComponent)
+    const dialogRef = this.dialog.open(AddBookComponent).afterClosed().subscribe(()=>{
+      this.homePageService.GetBooksHomePage()
+    })
+  }
+
+  openAddArticleDialog() {
+    const dialogRef = this.dialog.open(AddArticleComponent).afterClosed().subscribe(()=>{
+
+    });
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {GetBookDetailPageResponse} from "./book-details.model";
+import {GetBookDetailPageResponse, UpdateBookRequest} from "./book-details.model";
 
 @Injectable({
   providedIn: 'root'
@@ -17,4 +17,9 @@ export class BookDetailsService {
       `${this.apiUrl}GetBookDetails${id}`
     )
   }
+
+
+
+
+
 }

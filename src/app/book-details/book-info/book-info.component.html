@@ -3,11 +3,14 @@
 
     <!-- BookCover-->
     <div class="bookCover">
-      <img ngSrc="{{bookDetails.bookCover}}" width="200" height="300" alt="BookCover"
+      <img priority ngSrc="https://localhost:7171/BookCover?id={{bookDetails.id}}" width="200" height="300" alt="BookCover"
            style="border-bottom-right-radius: 5%;border-top-right-radius: 5%;">
       <div class="detailButtons">
         <button mat-raised-button style="background-color: #F4F1EA">Currently reading</button>
         <button mat-raised-button style="margin-top: 1rem;background-color: #F4F1EA">Buy on CorvoBianco</button>
+        <button mat-raised-button style="margin-top: 1rem;background-color: #F4F1EA" (click)="openAddBookCoverDialog(bookDetails)">Edit Book</button>
+
+
       </div>
     </div>
 
@@ -26,6 +29,7 @@
       <span style="font-size: larger;font-weight: lighter">Genre: {{bookDetails.genres}}</span>
       <p style="font-size: larger;font-weight: lighter">{{bookDetails.pageCount}} pages</p>
       <p style="font-size: larger;font-weight: lighter">First Published {{bookDetails.published | date}}</p>
+
     </div>
     <!-- Book Details-->
   </div>

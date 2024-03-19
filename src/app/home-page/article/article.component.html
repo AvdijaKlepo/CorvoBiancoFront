@@ -1,19 +1,29 @@
-<div class="allHeader">
-  <mat-card class="topArticle">
-    <mat-card-content>
-      <mat-card-title-group>
-        <mat-card-title>
-          <p style="font-family:'Century Gothic',serif;font-weight:bold">
-            Staff Picks: The Fall Books CorvoBianco Editors Can't Wait to Read
-          </p>
-        </mat-card-title>
-        <mat-card-subtitle>
-          <p style="font-family: 'Century Gothic',serif;font-weight: lighter">Fiction - Historical Fiction - Non Fiction</p>
-        </mat-card-subtitle>
-      </mat-card-title-group>
-    </mat-card-content>
-   <!-- <img alt="BigArticleImage" height="368" mat-card-image width="830" ngSrc=""> -->
-  </mat-card>
+@for (a of article; track a.id) {
+
+  <div class="allHeader">
+    <mat-card class="topArticle">
+      <mat-card-content>
+        <mat-card-title-group>
+          <mat-card-title>
+            <p style="font-family:'Century Gothic',serif;font-weight:bold">
+              {{a.title}}
+
+            </p>
+          </mat-card-title>
+          <mat-card-subtitle>
+            <p style="font-family: 'Century Gothic',serif;font-weight: lighter">Posted {{a.posted | date}}</p>
+          </mat-card-subtitle>
+
+
+
+        </mat-card-title-group>
+      </mat-card-content>
+      <img routerLink="/article-details/{{a.id}}" alt="BigArticleImage" height="368" mat-card-image width="860" ngSrc="{{a.articleImage}}" style="cursor: pointer">
+    </mat-card>
+
+
+
+
 
   <div class="topArticleLinks">
     <a href="" style="font-family: 'Century Gothic',serif;font-weight: lighter">
@@ -30,3 +40,4 @@
     <a style="font-size:small;font-weight:bold" href="">More news and interviews <mat-icon>keyboard_arrow_right</mat-icon></a>
   </div>
 </div>
+}

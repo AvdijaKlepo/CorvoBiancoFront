@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import {APP_ID, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {
+  AddArticleRequest, AddBookCoverRequest,
   AddBookRequest,
-  AddGenreRequest, AddSeriesRequest,
-  GetBooksResponse,
-  GetGenreResponse,
+  AddGenreRequest, AddSeriesRequest, GetArticleResponse, GetArticleResponseModel,
+  GetBooksResponse, GetClassicBookHomePageResponse,
+  GetGenreResponse, GetHFBookResponse, GetSciFiBookResponse,
   GetSeriesResponse
 } from "./home-page.model";
 import {GetAuthorResponse} from "../author/author.models";
@@ -24,6 +25,25 @@ export class HomePageService {
       `${this.apiUlr}GetBookHomePage`
     );
   }
+  GetSciFiBookHomePage()
+  {
+    return this.httpClient.get<GetSciFiBookResponse>(
+      `${this.apiUlr}GetSciFiBookHomePage`
+    );
+  }
+  GetHFBookHomePage()
+  {
+    return this.httpClient.get<GetHFBookResponse>(
+      `${this.apiUlr}GetHistoricalFictionBooks`
+    );
+  }
+
+  GetClassicBookHomePage()
+  {
+    return this.httpClient.get<GetClassicBookHomePageResponse>(
+      `${this.apiUlr}GetClassicBookHomePage`
+    )
+  }
 
   DeleteBook(id:number)
   {
@@ -37,6 +57,13 @@ export class HomePageService {
     return this.httpClient.post(
       `${this.apiUlr}AddBook`,
       book
+    );
+  }
+
+  GetBookCover(id:number)
+  {
+    return this.httpClient.get(
+      `${this.apiUlr}BookCover?id=${id}`
     );
   }
   GetAuthors()
@@ -72,6 +99,34 @@ export class HomePageService {
       `${this.apiUlr}AddSeries`,
       series
     );
+  }
+
+  AddArticle(article:AddArticleRequest)
+  {
+    return this.httpClient.post(
+      `${this.apiUlr}AddArticle`,
+      article
+    )
+  }
+  GetArtilce()
+  {
+    return this.httpClient.get<GetArticleResponse>(
+      `${this.apiUlr}GetArticles`
+    );
+  }
+  GetAllArticle()
+  {
+    return this.httpClient.get<GetArticleResponse>(
+      `${this.apiUlr}GetAllArticles`
+    );
+  }
+
+  GetArticleDetails(id:number)
+  {
+    return this.httpClient.get<GetArticleResponseModel>
+    (
+      `${this.apiUlr}GetArticleDetail${id}`
+    )
   }
 
 

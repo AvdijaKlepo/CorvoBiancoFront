@@ -45,7 +45,8 @@ export class AddBookComponent implements OnInit{
       description:'',
       pageCount:'',
       genreId:1,
-      published:new Date()
+      published:new Date(),
+
     });
     this.homePageService.GetAuthors().subscribe((x)=>{
       this.authors = x.authors;
@@ -68,4 +69,7 @@ export class AddBookComponent implements OnInit{
     })
     console.log(this.form.value)
   }
+
+
+
 }

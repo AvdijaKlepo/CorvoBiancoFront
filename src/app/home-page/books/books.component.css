@@ -1,6 +1,7 @@
 .Books
 {
-  margin-left:19rem;
+  width:100%;
+  padding-left: 19rem;
   display:inline-flex;
 }
 .cardBook
@@ -10,3 +11,5 @@
   border-bottom-right-radius: 5%;
   border-top-right-radius: 5%;
 }
+
+

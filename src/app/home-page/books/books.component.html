@@ -7,29 +7,166 @@
 
 <div class="Books" style="font-family:'Century Gothic',serif">
 
-  @for (b of books; track b.id)
-  {
-        <mat-card class="cardBook" style="width: 14.5rem;border-radius: 5%" >
+  <owl-carousel-o [options]="customOptions" style="width:70%">
+    @for (b of fantasyBooks;track b.id) {
+      <ng-container>
+      <ng-template carouselSlide [width]="270">
+        <mat-card class="cardBook" style="width: 14.5rem;border-top-right-radius: 5%;height: 30rem">
           <a routerLink="/book-details/{{b.id}}" style="text-decoration: none;color: black">
-            <img mat-card-xl-image src="{{b.bookCover}}" alt="bladeitself" style="width:14.5rem;height:19rem;">
+            <img mat-card-xl-image src="https://localhost:7171/BookCover?id={{b.id}}" alt="bookCover" style="width:14.5rem;height:19rem;border-top-right-radius: 5%">
             <mat-card-content>
               <p style="padding-top: 1rem;font-size:large">
-                {{b.title}}
+                {{ b.title }}
               </p>
               <p style="font-size: larger">
-                {{b.author}}
+                {{ b.author }}
               </p>
+
               <div style="display: flex">
                 <p>
                   <mat-icon>star</mat-icon>
                 </p>
-                <p style="padding-top: 0.2rem;padding-left: 0.5rem;">{{b.rating}} • {{b.ratingCount}}</p></div>
+                <p style="padding-top: 0.2rem;padding-left: 0.5rem;">{{ b.rating }} • {{ b.ratingCount }}</p></div>
             </mat-card-content>
 
           </a>
-          <button mat-raised-button style="margin-left: 3.5rem;width: 8rem;margin-bottom: 1rem;margin-top: -1.5rem" (click)="DeleteBook(b.id)">Delete
+          <button mat-raised-button style="margin-left: 3.5rem;width: 8rem;margin-bottom: 1rem;margin-top: -1.5rem"
+                  (click)="DeleteBook(b.id)">Delete
           </button>
         </mat-card>
-  }
+      </ng-template>
+      </ng-container>
+
+    }
+  </owl-carousel-o>
+
+</div>
+
+
+<div style="display:flex;">
+  <h1 style="font-family:'Century Gothic',serif;margin-left:20rem;padding-top: 2rem">Science-Fiction</h1>
+</div>
+
+
+<div class="Books" style="font-family:'Century Gothic',serif">
+
+  <owl-carousel-o [options]="customOptions" style="width:70%">
+    @for (b of sciFiBooks;track b.id) {
+      <ng-container>
+        <ng-template carouselSlide [width]="270">
+          <mat-card class="cardBook" style="width: 14.5rem;border-top-right-radius: 5%;height: 30rem">
+            <a routerLink="/book-details/{{b.id}}" style="text-decoration: none;color: black">
+              <img mat-card-xl-image src="https://localhost:7171/BookCover?id={{b.id}}" alt="bookCover" style="width:14.5rem;height:19rem;border-top-right-radius: 5%">
+              <mat-card-content>
+                <p style="padding-top: 1rem;font-size:large">
+                  {{ b.title }}
+                </p>
+                <p style="font-size: larger">
+                  {{ b.author }}
+                </p>
+
+                <div style="display: flex">
+                  <p>
+                    <mat-icon>star</mat-icon>
+                  </p>
+                  <p style="padding-top: 0.2rem;padding-left: 0.5rem;">{{ b.rating }} • {{ b.ratingCount }}</p></div>
+              </mat-card-content>
+
+            </a>
+            <button mat-raised-button style="margin-left: 3.5rem;width: 8rem;margin-bottom: 1rem;margin-top: -1.5rem"
+                    (click)="DeleteBook(b.id)">Delete
+            </button>
+          </mat-card>
+        </ng-template>
+      </ng-container>
+
+    }
+  </owl-carousel-o>
+
+</div>
+
+<div style="display:flex;">
+  <h1 style="font-family:'Century Gothic',serif;margin-left:20rem;padding-top: 2rem">Classics</h1>
+</div>
+
+
+<div class="Books" style="font-family:'Century Gothic',serif">
+
+  <owl-carousel-o [options]="customOptions" style="width:70%">
+    @for (b of classicBook;track b.id) {
+      <ng-container>
+        <ng-template carouselSlide [width]="270">
+          <mat-card class="cardBook" style="width: 14.5rem;border-top-right-radius: 5%;height: 30rem">
+            <a routerLink="/book-details/{{b.id}}" style="text-decoration: none;color: black">
+              <img mat-card-xl-image src="https://localhost:7171/BookCover?id={{b.id}}" alt="bookCover" style="width:14.5rem;height:19rem;border-top-right-radius: 5%">
+              <mat-card-content>
+                <p style="padding-top: 1rem;font-size:large">
+                  {{ b.title }}
+                </p>
+                <p style="font-size: larger">
+                  {{ b.author }}
+                </p>
+
+                <div style="display: flex">
+                  <p>
+                    <mat-icon>star</mat-icon>
+                  </p>
+                  <p style="padding-top: 0.2rem;padding-left: 0.5rem;">{{ b.rating }} • {{ b.ratingCount }}</p></div>
+              </mat-card-content>
+
+            </a>
+            <button mat-raised-button style="margin-left: 3.5rem;width: 8rem;margin-bottom: 1rem;margin-top: -1.5rem"
+                    (click)="DeleteBook(b.id)">Delete
+            </button>
+          </mat-card>
+        </ng-template>
+      </ng-container>
+
+    }
+  </owl-carousel-o>
+
+</div>
+
+<div style="display:flex;">
+  <h1 style="font-family:'Century Gothic',serif;margin-left:20rem;padding-top: 2rem">Historical Fiction</h1>
+
+
+</div>
+
+
+<div class="Books" style="font-family:'Century Gothic',serif">
+
+  <owl-carousel-o [options]="customOptions" style="width:70%">
+    @for (b of historicalFictionBook;track b.id) {
+      <ng-container>
+        <ng-template carouselSlide [width]="270">
+          <mat-card class="cardBook" style="width: 14.5rem;border-top-right-radius: 5%;height: 30rem">
+            <a routerLink="/book-details/{{b.id}}" style="text-decoration: none;color: black">
+              <img mat-card-xl-image src="https://localhost:7171/BookCover?id={{b.id}}" alt="bookCover" style="width:14.5rem;height:19rem;border-top-right-radius: 5%">
+              <mat-card-content>
+                <p style="padding-top: 1rem;font-size:large">
+                  {{ b.title }}
+                </p>
+                <p style="font-size: larger">
+                  {{ b.author }}
+                </p>
+
+                <div style="display: flex">
+                  <p>
+                    <mat-icon>star</mat-icon>
+                  </p>
+                  <p style="padding-top: 0.2rem;padding-left: 0.5rem;">{{ b.rating }} • {{ b.ratingCount }}</p></div>
+              </mat-card-content>
+
+            </a>
+            <button mat-raised-button style="margin-left: 3.5rem;width: 8rem;margin-bottom: 1rem;margin-top: -1.5rem"
+                    (click)="DeleteBook(b.id)">Delete
+            </button>
+          </mat-card>
+        </ng-template>
+      </ng-container>
+
+    }
+  </owl-carousel-o>
 
 </div>

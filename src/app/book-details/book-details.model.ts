@@ -11,3 +11,16 @@ export interface GetBookDetailPageResponse {
   published: string;
   bookCover: string | null;
 }
+
+export interface UpdateBookRequest {
+  id: number;
+  title: string;
+  author: number;
+  seriesId: number;
+  rating: number | null;
+  ratingCount: number | null;
+  description: string;
+  genreId: number;
+  pageCount: number;
+  published: string;
+}

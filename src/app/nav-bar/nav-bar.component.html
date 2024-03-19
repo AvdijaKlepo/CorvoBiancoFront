@@ -31,15 +31,15 @@
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
       <button mat-raised-button style="height: 2.5rem;width: 8rem;margin-left: 1rem; background-color: #730505;color:#fde9d4; font-family: 'Century Gothic',serif">Sign Up</button>
-    <mat-form-field style="margin-top: 1rem;margin-left: 3rem;padding-top: .5rem;height: 4.5rem">
-      <mat-label>Admin</mat-label>
-      <mat-select>
-        <mat-option (click)="openAddAuthorDialog()">Add Author</mat-option>
-        <mat-option (click)="openAddGenreDialog()">Add Genre</mat-option>
-        <mat-option (click)="openAddSeriesDialog()">Add Series</mat-option>
-        <mat-option (click)="openAddBookDialog()">Add Book</mat-option>
-      </mat-select>
-    </mat-form-field>
+    <button mat-button [matMenuTriggerFor]="menu" #menuTrigger style="font-family:'Century Gothic';font-weight: bold">Admin</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="openAddAuthorDialog()">Add Author</button>
+      <button mat-menu-item (click)="openAddGenreDialog()">Add Genre</button>
+      <button mat-menu-item (click)="openAddSeriesDialog()">Add Series</button>
+      <button mat-menu-item (click)="openAddBookDialog()">Add Book</button>
+      <button mat-menu-item (click)="openAddArticleDialog()">Add Article</button>
+    </mat-menu>
+
 
   </mat-toolbar-row>
 </mat-toolbar>

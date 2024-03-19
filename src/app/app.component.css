@@ -1,0 +1,16 @@
+.owl-theme .owl-nav {
+  margin-top: 10px;
+  margin-right: 117rem;
+  width: 100%;
+}
+
+.owl-theme .owl-nav [class*="owl-"] {
+  color: black;
+  font-size: 14px;
+  margin: 5px;
+  padding: 4px 7px;
+  background: #D6D6D6;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 3px;
+}

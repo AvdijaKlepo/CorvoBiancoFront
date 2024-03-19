@@ -14,6 +14,9 @@ import {NavBarComponent} from "./nav-bar/nav-bar.component";
 import {FooterComponent} from "./footer/footer.component";
 import {AuthorComponent} from "./author/author.component";
 import {MatSelectModule} from "@angular/material/select";
+import {CarouselModule} from "ngx-owl-carousel-o";
+import {BooksComponent} from "./home-page/books/books.component";
+import {ArticleDetailsComponent} from "./article-details/article-details.component";
 
 
 @NgModule({
@@ -27,6 +30,7 @@ import {MatSelectModule} from "@angular/material/select";
     HomePageComponent,
     HttpClientModule,
     MatNativeDateModule,
+    CarouselModule,
     RouterModule.forRoot([
       {
         path:'home-page',
@@ -45,6 +49,10 @@ import {MatSelectModule} from "@angular/material/select";
       {
         path:'author',
         component:AuthorComponent
+      },
+      {
+        path:'article-details/:id',
+        component:ArticleDetailsComponent
       }
     ]),
     RouterTestingModule,
