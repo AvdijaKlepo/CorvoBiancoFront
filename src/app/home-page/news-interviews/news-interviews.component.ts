@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {MatCardModule} from "@angular/material/card";
 import {HomePageService} from "../home-page.service";
 import {GetArticleResponse, GetArticleResponseModel} from "../home-page.model";
@@ -9,7 +9,7 @@ import {RouterLink} from "@angular/router";
 @Component({
   selector: 'app-news-interviews',
   standalone: true,
-  imports: [CommonModule, MatCardModule, CarouselModule, RouterLink],
+  imports: [CommonModule, MatCardModule, CarouselModule, RouterLink, NgOptimizedImage],
   templateUrl: './news-interviews.component.html',
   styleUrl: './news-interviews.component.css'
 })

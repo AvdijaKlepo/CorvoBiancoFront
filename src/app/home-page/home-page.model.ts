@@ -16,16 +16,16 @@ export interface GetBooksResponseModel {
 
 export interface AddBookRequest {
   id: number;
-  title: string;
-  authorId: number;
+  title: string | null;
+  authorId: number | null;
   series: number | null;
   rating: number | null;
   ratingCount: number | null;
-  description: string;
-  genreId: number;
-  pageCount: number;
-  published: string;
-  bookCover:string | undefined | null
+  description: string | null;
+  genreId: number | null;
+  pageCount: number | null;
+  published: string | null;
+  bookCover: string | null;
 }
 
 export interface AddBookCoverRequest{
@@ -78,7 +78,6 @@ export interface AddArticleRequest {
   title: string;
   preview: string;
   posted: string;
-  articleImage: string;
   articleDescription: string;
   genreId: number;
 }
@@ -92,6 +91,8 @@ export interface GetArticleResponseModel {
   articleImage: string;
   articleDescription: string;
   books: Book[];
+  genreId:number;
+  genre:string;
 }
 
 export interface GetArticleResponse {

@@ -25,7 +25,6 @@ export class AddArticleComponent implements OnInit{
         title: '',
         preview: '',
         posted: new Date(),
-        articleImage: '',
         articleDescription: '',
         genreId:''
       });

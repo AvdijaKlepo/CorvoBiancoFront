@@ -17,6 +17,9 @@ import {MatSelectModule} from "@angular/material/select";
 import {CarouselModule} from "ngx-owl-carousel-o";
 import {BooksComponent} from "./home-page/books/books.component";
 import {ArticleDetailsComponent} from "./article-details/article-details.component";
+import {AuthorDetailsComponent} from "./author/author-details/author-details.component";
+import {NewsPageComponent} from "./news-page/news-page.component";
+import {NewsInterviewsComponent} from "./home-page/news-interviews/news-interviews.component";
 
 
 @NgModule({
@@ -35,6 +38,9 @@ import {ArticleDetailsComponent} from "./article-details/article-details.compone
       {
         path:'home-page',
         component:HomePageComponent,
+        children:[
+          {path:'news',component:NewsPageComponent}
+        ]
 
       },
       {
@@ -53,7 +59,16 @@ import {ArticleDetailsComponent} from "./article-details/article-details.compone
       {
         path:'article-details/:id',
         component:ArticleDetailsComponent
-      }
+      },
+      {
+        path:'author-details/:id',
+        component:AuthorDetailsComponent
+      },
+      {
+       path:'news',
+        component:NewsPageComponent,
+
+      },
     ]),
     RouterTestingModule,
     NavBarComponent,

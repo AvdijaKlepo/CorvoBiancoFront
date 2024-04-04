@@ -1,24 +1,47 @@
 
+  <div class="Authors" style="font-family:Lato,'Helvetica Neue',Helvetica,sans-serif;display: flex;flex-direction: column">
+    <!-- TODO za sad radi ali moglo bi da ne radi-->
+    <h1 style="padding-left: 5rem;font-family:Lato,'Helvetica Neue',Helvetica,sans-serif;font-weight: bold;color: #730505">Authors on
+      CorvoBianco</h1>
+    <h3 style="padding-left: 5rem;font-family:Lato,'Helvetica Neue',Helvetica,sans-serif">Authors who authored works displayed on
+      CorvoBianco</h3>
+    @for (author of authors; track author.id)
+    {
 
-<div class="Authors" style="font-family:'Century Gothic',serif">
-<!-- TODO za sad radi ali moglo bi da ne radi-->
-  @for (author of authors; track author.id)
-  {
-    <mat-card class="cardAuthor" style="width: 14.5rem;border-radius: 5%" >
-      <a routerLink="/book-details/{{author.id}}" style="text-decoration: none;color: black">
-        <img mat-card-xl-image src="{{author.profilePicture}}" alt="bladeitself" style="width:14.5rem;height:19rem;">
-        <mat-card-content>
-          <p style="padding-top: 1rem;font-size:large;text-align: center">
-            {{author.firstName}} {{author.lastName}}
-          </p>
-          <button mat-raised-button style="margin-left: 2.5rem;width: 8rem;margin-bottom:0.5rem;margin-top:1.5rem" (click)="deleteAuthor(author.id)">Delete
-          </button>
+        <div class="author" style="display: flex;flex-direction: row;padding-left: 4rem">
+          <div class="authorImage">
+            <img routerLink="/author-details/{{author.id}}" priority ngSrc="https://localhost:7171/GetAuthorImage?id={{author.id}}" alt="authorImage" height="90" width="90"
+                 style="border-radius: 100%;margin-top: 1rem">
+          </div>
+          <div class="authorInfo" style="font-family:Lato,'Helvetica Neue',Helvetica,sans-serif">
+            <h3 style="font-family:Lato,'Helvetica Neue',Helvetica,sans-serif;padding-left: 1rem">{{ author.firstName }} {{ author.lastName }}</h3>
+            @for (authorBooks of author.books; track authorBooks.id; let i=$index)
+            {
+              @if(i===0)
+              {
 
-        </mat-card-content>
+                @if(author.books!.length!-1===0)
+                {
+                  <h5 style="padding-left: 1rem">Author of the <mark style="background-color:whitesmoke;color: cadetblue;cursor: pointer" routerLink="/book-details/{{authorBooks.id}}">{{authorBooks.title }}</mark></h5>
+                  <button mat-raised-button (click)="deleteAuthor(author.id)" style="margin-left: 1rem">Delete Author</button>
+                }
+                @else {
+                  <h5 style="padding-left: 1rem">Author of the <mark style="background-color:whitesmoke;color: cadetblue;cursor: pointer" routerLink="/book-details/{{authorBooks.id}}">{{authorBooks.title }}</mark> and {{ author.books!.length -1 }} more books</h5>
+                  <button mat-raised-button (click)="deleteAuthor(author.id)" style="margin-left: 1rem">Delete Author</button>
+                }
 
-      </a>
 
-    </mat-card>
-  }
 
-</div>
+
+
+
+              }
+            }
+          </div>
+        </div>
+        <mat-divider style="width: 40%">-</mat-divider>
+    }
+
+
+  </div>
+

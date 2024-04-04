@@ -1,0 +1,42 @@
+<ng-container *ngIf="authorDetails"> <!-- napravi getter-->
+  <div class="bookDetails">
+
+    <!-- BookCover-->
+    <div class="bookCover">
+      <img priority ngSrc="https://localhost:7171/GetAuthorImage?id={{authorDetails.id}}" width="200" height="300" alt="BookCover"
+           style="border-bottom-right-radius: 5%;border-top-right-radius: 5%;">
+      <div class="detailButtons">
+
+
+        <button mat-raised-button style="margin-top: 1rem;background-color: #F4F1EA" (click)="openEditAuthorDialog(authorDetails)">Edit Author Details</button>
+        <button mat-raised-button style="margin-top: 1rem;background-color: #F4F1EA" (click)="openEditAuthorImage()">Edit Author Profile Image</button>
+
+
+
+      </div>
+    </div>
+
+    <!-- Info-->
+
+    <div class="bookInfo" style="font-family: 'Century Gothic'">
+      <h2 style="font-weight: bolder">{{authorDetails.firstName}} {{authorDetails.lastName}}</h2>
+      <mat-divider style="width: 30%">-</mat-divider>
+      <h1 style="font-size: medium">
+        <mark style="font-size: medium;background-color: whitesmoke;padding-right: 6rem;font-weight: bold">Born:</mark> {{authorDetails.born | date}}</h1>
+      <p style="width: 60rem;font-size: larger;white-space: pre-wrap"><mark style="background-color: whitesmoke;font-weight: bold">Biography:</mark> <br> <br>{{authorDetails.bio | slice:sliceOptions.start:sliceOptions.end}}</p>
+      <div *ngIf="authorDetails.bio.length>=sliceOptions.default">
+        <span (click)="seeMore($event)" style="cursor: pointer">See more</span>
+      </div>
+      <br>
+
+
+    </div>
+    <!-- Book Details-->
+  </div>
+</ng-container>
+
+
+
+
+
+

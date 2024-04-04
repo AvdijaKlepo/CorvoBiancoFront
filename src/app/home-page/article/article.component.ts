@@ -15,16 +15,25 @@ import {RouterLink} from "@angular/router";
 })
 export class ArticleComponent implements OnInit{
    article: GetArticleResponseModel[]=[];
+   allArticles:GetArticleResponseModel[]=[];
   constructor(private homePageService:HomePageService) {
   }
 
   ngOnInit(): void {
         this.loadArticles();
+        this.loadThreeArticles();
     }
+
+  private loadThreeArticles() {
+    this.homePageService.GetThreeArticle().subscribe((x)=>{
+      this.allArticles=x.articles;
+    })
+  }
 
     private loadArticles(){
       this.homePageService.GetArtilce().subscribe((x)=>{
         this.article = x.articles;
       })
     }
+
 }

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component, ViewEncapsulation} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
@@ -50,7 +50,7 @@ export class NavBarComponent {
 
   openAddArticleDialog() {
     const dialogRef = this.dialog.open(AddArticleComponent).afterClosed().subscribe(()=>{
-
+      this.homePageService.GetAllArticle();
     });
   }
 }

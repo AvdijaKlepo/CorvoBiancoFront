@@ -1,18 +1,18 @@
-<h1 style="font-family:'Century Gothic',serif;margin-left:20rem;padding-top: 2rem">News & Interviews</h1>
+<h1 style="font-family:Lato,'Helvetica Neue',Helvetica,sans-serif;margin-left:20rem;padding-top: 2rem">News & Interviews</h1>
 <div class="Article">
-  <owl-carousel-o [options]="customOptions" style="width:60%">
+  <owl-carousel-o [options]="customOptions" style="width:69%">
 @for (a of articles; track a.id)
 {
   <ng-container>
     <ng-template carouselSlide [width]="500">
 
-  <mat-card class="Article1" style="margin:1rem;width: 26rem;">
-   <img mat-card-image src="{{a.articleImage}}" alt="article" style="width: 26rem;cursor: pointer" routerLink="/article-details/{{a.id}}">
+  <mat-card class="Article1" style="margin:1rem;width: 24rem;border-top-right-radius: 3%;border-top-left-radius: 3%">
+   <img mat-card-image ngSrc="https://localhost:7171/ArticleImage?id={{a.id}}" alt="article" height="260" width="120" style="cursor: pointer;" routerLink="/article-details/{{a.id}}">
     <mat-card-content style="background-color: #F4F1EA">
-      <p style="padding-top:1rem;font-family: 'Century Gothic',serif;font-size: 1.1rem">
+      <p style="padding-top:1rem;font-family:Lato,'Helvetica Neue',Helvetica,sans-serif;font-size: 1.1rem">
         {{a.title}}
       </p>
-      <p style="font-family: 'Century Gothic',serif;font-weight: lighter;">{{a.posted | date}}</p>
+      <p style="font-family:Lato,'Helvetica Neue',Helvetica,sans-serif;font-weight: lighter;">{{a.posted | date}}</p>
     </mat-card-content>
   </mat-card>
     </ng-template>

@@ -1,14 +1,17 @@
 <ng-container *ngIf="bookDetails"> <!-- napravi getter-->
-  <div class="bookDetails">
+  <div class="bookDetails" style="background-color: whitesmoke;font-family:Lato,'Helvetica Neue',Helvetica,sans-serif">
 
     <!-- BookCover-->
     <div class="bookCover">
       <img priority ngSrc="https://localhost:7171/BookCover?id={{bookDetails.id}}" width="200" height="300" alt="BookCover"
            style="border-bottom-right-radius: 5%;border-top-right-radius: 5%;">
       <div class="detailButtons">
-        <button mat-raised-button style="background-color: #F4F1EA">Currently reading</button>
-        <button mat-raised-button style="margin-top: 1rem;background-color: #F4F1EA">Buy on CorvoBianco</button>
-        <button mat-raised-button style="margin-top: 1rem;background-color: #F4F1EA" (click)="openAddBookCoverDialog(bookDetails)">Edit Book</button>
+
+        <button mat-raised-button style="margin-top: 1rem;background-color: #F4F1EA;font-family:Lato,'Helvetica Neue',Helvetica,sans-serif">Currently reading</button>
+        <button mat-raised-button style="margin-top: 1rem;background-color: #F4F1EA;font-family:Lato,'Helvetica Neue',Helvetica,sans-serif">Buy on CorvoBianco</button>
+        <button mat-raised-button style="margin-top: 1rem;background-color: #F4F1EA;font-family:Lato,'Helvetica Neue',Helvetica,sans-serif" (click)="openAddBookCoverDialog(bookDetails)">Edit Book</button>
+        <button mat-raised-button style="margin-top: 1rem;background-color: #F4F1EA;font-family:Lato,'Helvetica Neue',Helvetica,sans-serif" (click)="openEditBookCoverDialog()">Edit Book Cover</button>
+
 
 
       </div>
@@ -16,24 +19,105 @@
 
     <!-- Info-->
 
-    <div class="bookInfo" style="font-family: 'Century Gothic'">
-      <h2 style="font-weight: lighter">{{bookDetails.series}}</h2>
+    <div class="bookInfo" style="font-family:Lato,'Helvetica Neue',Helvetica,sans-serif">
+      <h2 style="font-weight: lighter"> {{bookDetails.series}}</h2>
       <h1 style="font-weight: normal;font-size: xx-large">{{bookDetails.title}}</h1>
-      <span style="font-size: larger;font-weight: lighter">{{bookDetails.author}}</span>
+      <span routerLink="/author-details/{{bookDetails.authorId}}" style="font-size: larger;font-weight: lighter;cursor: pointer">{{bookDetails.author}}</span>
       <h1>{{bookDetails.rating}}  • {{bookDetails.ratingCount}}</h1>
-      <p style="width: 60rem;font-size: larger;white-space: pre-wrap">{{bookDetails.description | slice:sliceOptions.start:sliceOptions.end}}</p>
-      <div *ngIf="bookDetails.description.length>=sliceOptions.default">
-        <span (click)="seeMore($event)">See more</span>
-      </div>
+      @if(bookDetails.description.length>=sliceOptions.default)
+      {
+      <p style="width: 50rem;font-size: larger;white-space: pre-wrap;">{{bookDetails.description | slice:sliceOptions.start:sliceOptions.end}}
+      <mark style="background-color: whitesmoke;color: #00635d"><span id="seeMoreBookDescription" (click)="seeMore($event);Hidden=!Hidden" style="cursor: pointer">{{Hidden ? "...Show more": "Show Less"}}</span></mark></p>
+      }
+      @else
+      {
+        <p style="width: 50rem;font-size: larger;white-space: pre-wrap;">{{bookDetails.description}}</p>
+      }
+
+
+
       <br>
       <span style="font-size: larger;font-weight: lighter">Genre: {{bookDetails.genres}}</span>
       <p style="font-size: larger;font-weight: lighter">{{bookDetails.pageCount}} pages</p>
       <p style="font-size: larger;font-weight: lighter">First Published {{bookDetails.published | date}}</p>
 
+      <mat-divider style="width: 58rem">-</mat-divider>
+      <br>
+      Want to read - Currenty reading
+      <br>
+      <br>
+      <mat-divider>-</mat-divider>
+
+      <h1>About the Author</h1>
+      <div style="display: flex;flex-direction: row;">
+        <div>
+          <img routerLink="/author-details/{{bookDetails.authorId}}" priority
+               ngSrc="https://localhost:7171/GetAuthorImage?id={{bookDetails.authorId}}" alt="authorImage" height="1000"
+               width="786"
+               style="border-radius: 100%; width: 5rem;height: 5rem">
+        </div>
+        <div style="font-family:Lato,'Helvetica Neue',Helvetica,sans-serif">
+          <h2 style="font-weight: lighter;padding-top: 0.5rem;padding-left: 1rem">{{ bookDetails.author }}</h2>
+          <h2 style="font-weight: lighter;padding-left: 1rem;font-size: smaller">{{bookDetails.authorBooks.length}} books</h2>
+
+        </div>
+
+
+      </div>
+
+
+      <p  style="font-size: larger;width: 50rem;white-space: pre-wrap" >{{bookDetails.authorBio | slice:sliceOptions.start:sliceOptions.end}}
+
+      <mark  id="seeMore" *ngIf="bookDetails.authorBio.length>=sliceOptions.default" (click)="setLocation();seeMore($event)"
+             style="cursor: pointer;background-color: whitesmoke;color: #00635d">... See more</mark></p>
+
+
+
+      <mat-divider style="width: 58rem;">-</mat-divider>
     </div>
     <!-- Book Details-->
   </div>
 </ng-container>
+
+
+
+<div class="Books" style="font-family:Lato,'Helvetica Neue',Helvetica,sans-serif;background-color: whitesmoke;padding-left: 44rem">
+<h1>Other works by {{bookDetails.author}}</h1>
+  <owl-carousel-o [options]="customOptions" style="width:70%">
+    @for (authorBooks of bookDetails.authorBooks; track authorBooks.id) {
+      @if(authorBooks.id!=route.snapshot.params['id'])
+      {
+      <ng-container>
+        <ng-template carouselSlide [width]="240">
+          <mat-card class="cardBook"  style="width: 13rem;border-top-right-radius: 5%;background-color: whitesmoke;box-shadow: none">
+            <a routerLink="/book-details/{{authorBooks.id}}" style="text-decoration: none;color: black">
+              <img priority mat-card-xl-image ngSrc="https://localhost:7171/BookCover?id={{authorBooks.id}}" width="100" height="100" alt="bookCover"
+                   style="width:13rem;height:18rem;border-top-right-radius: 5%;border-bottom-right-radius: 5%">
+              <mat-card-content>
+                <p style="padding-top: 1rem;font-size:large">
+                  {{ authorBooks.title }}
+                </p>
+
+
+                <div style="display: flex">
+                  <p>
+                    <mat-icon>star</mat-icon>
+                  </p>
+                  <p style="padding-top: 0.2rem;padding-left: 0.5rem;">{{ authorBooks.rating }} • {{ authorBooks.ratingCount }}</p></div>
+              </mat-card-content>
+
+            </a>
+
+          </mat-card>
+        </ng-template>
+      </ng-container>
+      }
+
+    }
+  </owl-carousel-o>
+  <br><br><br><br><br>
+
+</div>
 
 
 

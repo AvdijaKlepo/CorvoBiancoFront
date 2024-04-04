@@ -3,11 +3,11 @@
   <div mat-dialog-content style="display:flex;flex-direction: column;width: 25rem">
     <mat-form-field style="width: 20rem">
       <mat-label>Article Title</mat-label>
-      <input matInput formControlName="title">
+      <input matInput formControlName="title" >
     </mat-form-field>
     <mat-form-field style="width: 20rem">
       <mat-label>Article Preview</mat-label>
-      <input matInput formControlName="preview">
+      <input matInput formControlName="preview" >
     </mat-form-field>
     <mat-form-field style="width: 20rem">
       <mat-label>Posted</mat-label>
@@ -18,16 +18,18 @@
     </mat-form-field>
     <mat-form-field style="width: 20rem">
       <mat-label>Article Description</mat-label>
-      <textarea matInput formControlName="articleDescription"></textarea>
+      <textarea matInput formControlName="articleDescription" ></textarea>
     </mat-form-field>
     <mat-form-field style="width: 20rem">
-      <mat-label>Genre</mat-label>
+      <mat-label>{{data.genre}}</mat-label>
       <mat-select formControlName="genreId">
         @for(genres of genre; track genres.id){
           <mat-option  [value]="genres.id">{{genres.genre}}</mat-option>
         }
       </mat-select>
     </mat-form-field>
+
+
 
 
 

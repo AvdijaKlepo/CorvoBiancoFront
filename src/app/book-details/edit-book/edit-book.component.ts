@@ -13,7 +13,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
-import {FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HomePageService} from "../../home-page/home-page.service";
 import {GetAuthorResponseModel} from "../../author/author.models";
 import {GetGenreResponseModel, GetSeriesResponseModel} from "../../home-page/home-page.model";
@@ -23,7 +23,7 @@ import {BookDetailsService} from "../book-details.service";
 @Component({
   selector: 'app-edit-book',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatDatepickerModule, MatDialogActions, MatDialogContent, MatDialogTitle, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, ReactiveFormsModule, NgOptimizedImage],
+  imports: [CommonModule, MatButtonModule, MatDatepickerModule, MatDialogActions, MatDialogContent, MatDialogTitle, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, ReactiveFormsModule, NgOptimizedImage, FormsModule],
   templateUrl: './edit-book.component.html',
   styleUrl: './edit-book.component.css'
 })
@@ -34,7 +34,7 @@ export class EditBookComponent implements OnInit{
   series: GetSeriesResponseModel[]=[];
   genres: GetGenreResponseModel[]=[];
   constructor(private fb:FormBuilder,private homePageService:HomePageService,private dialogRef:MatDialogRef<EditBookComponent>,
-              @Inject(MAT_DIALOG_DATA) public data:GetBookDetailPageResponse,private bookDetailsService:BookDetailsService) {
+              @Inject(MAT_DIALOG_DATA) public data:GetBookDetailPageResponse) {
 
   }
     ngOnInit(): void {
@@ -43,14 +43,15 @@ export class EditBookComponent implements OnInit{
         title:this.data.title,
         authorId:this.data.author,
         series:this.data.series,
+        genreId:this.data.genres,
         description:this.data.description,
         pageCount:this.data.pageCount,
-        genreId:this.data.genres,
         published:this.data.published,
-        bookCover:this.value
+
 
 
       });
+      console.log(this.data.authorId)
 
       this.homePageService.GetAuthors().subscribe((x)=>{
         this.authors = x.authors;
@@ -65,16 +66,7 @@ export class EditBookComponent implements OnInit{
     }
   value!:any;
   submit() {
-    this.form=this.fb.group({
-      id:this.data.id,
-      title:this.data.title,
-      description:this.data.description,
-      pageCount:this.data.pageCount,
-      published:this.data.published,
-      bookCover:this.value
 
-
-    });
 
     this.form.value.id=this.data.id;
     this.homePageService.AddBook(this.form.value).subscribe(()=>{

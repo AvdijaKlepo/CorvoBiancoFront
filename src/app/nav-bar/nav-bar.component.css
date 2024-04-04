@@ -1,10 +1,11 @@
 /** Header **/
 .Header
 {
-  background-color: black;
-  color: white;
-  height:3rem;
-  font-family: "Century Gothic", serif;
+  background-color: #ffc0af;
+  color: black;
+  font-size: x-small;
+  height:0.1rem;
+  font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
 }
 .Header:hover
 {
@@ -14,18 +15,21 @@
 {
   display: flex;
   justify-content: center;
-  padding-top: 0.6rem;
 }
 h1
 {
   padding-inline: 0.5rem;
+  font-weight: lighter;
+  font-size: x-small;
 }
 
 /** Navigation Bar **/
 .NavigationBar
 {
-  background-color: #F4F1EA;
-  font-family: "Century Gothic", serif
+  background-color:#f4f1ea;
+  font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+  border-bottom-style:inset;
+  border-width: 0.1rem;
 }
 .NavigationBarRow
 {

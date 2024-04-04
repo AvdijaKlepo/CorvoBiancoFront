@@ -1,19 +1,19 @@
-<mat-toolbar class="Header">
+<mat-toolbar class="Header" style="min-height: 2.5rem">
   <mat-toolbar-row class="HeaderItems">
-    <mat-icon>adb</mat-icon>
-    <h1 style="font-weight: bolder">100 New Horror Books</h1>
-    <h1>Picks for every kind of reader</h1>
+    <mat-icon>book</mat-icon>
+    <h1 style="font-size: medium">The Big Books of Spring</h1>
+    <h1 style="font-size: small;font-weight: lighter">Discover readers' most anticipated new releases this season</h1>
     <mat-icon>keyboard_arrow_right</mat-icon>
   </mat-toolbar-row>
 </mat-toolbar>
 
 
 
-<mat-toolbar class="NavigationBar">
+<mat-toolbar class="NavigationBar" style="">
   <mat-toolbar-row class="NavigationBarRow">
     <div class="Right">
-      <span class="Title" style="font-weight: bolder">Corvo</span>
-      <span class="Title" style="color: #730505;font-weight: bolder">Bianco</span>
+      <span class="Title" style="font-weight: 100;">corvo</span>
+      <span class="Title" style="color: #730505;font-weight: normal">Bianco</span>
       <div class="NavigationBarLinks">
         <a href="" >Home</a>
         <a href="">My Books</a>
@@ -23,15 +23,20 @@
 
     </div>
 
-      <mat-form-field class="SearchBar" style="padding-top: 1.2rem;height: 4.5rem;width: 20rem;margin-left: 7rem">
-        <mat-label style="font-family: 'Century Gothic',serif">
-          Search
-        </mat-label>
-        <input class="SearchInput" type="text" matInput placeholder="Book">
-        <mat-icon matSuffix>search</mat-icon>
-      </mat-form-field>
-      <button mat-raised-button style="height: 2.5rem;width: 8rem;margin-left: 1rem; background-color: #730505;color:#fde9d4; font-family: 'Century Gothic',serif">Sign Up</button>
-    <button mat-button [matMenuTriggerFor]="menu" #menuTrigger style="font-family:'Century Gothic';font-weight: bold">Admin</button>
+    <mat-form-field subscriptSizing="dynamic"  class="SearchBar" style="font-family:Lato,'Helvetica Neue',Helvetica,sans-serif;width: 65rem;height: 3rem;box-shadow: 0 1px 1px rgba(0,0,0,.1);border-top-left-radius: 10%;border-top-right-radius: 10%">
+      <mat-label style="padding-bottom: 5rem">
+        Search
+      </mat-label>
+      <input class="SearchInput" type="text" matInput placeholder="Book">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+
+
+
+
+    <button mat-raised-button style="height: 2.5rem;width: 15rem;margin-left: 3rem; background-color: #730505;color:#fde9d4; font-family:Lato,'Helvetica Neue',Helvetica,sans-serif">Sign Up</button>
+    <button mat-button [matMenuTriggerFor]="menu" #menuTrigger style="font-family:Lato,'Helvetica Neue',Helvetica,sans-serif;font-weight: bold">Admin</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="openAddAuthorDialog()">Add Author</button>
       <button mat-menu-item (click)="openAddGenreDialog()">Add Genre</button>

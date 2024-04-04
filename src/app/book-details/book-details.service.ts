@@ -18,6 +18,13 @@ export class BookDetailsService {
     )
   }
 
+  GetBookCover(id:number)
+  {
+    return this.httpClient.get(
+      `${this.apiUrl}BookCover?id=${id}`
+    )
+  }
+
 
 
 

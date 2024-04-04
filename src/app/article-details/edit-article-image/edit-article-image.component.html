@@ -1,27 +1,31 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
   <h1 mat-dialog-title> Add New Genre</h1>
   <div mat-dialog-content style="display:flex;flex-direction: column;width: 25rem">
-    <mat-form-field style="width: 20rem">
+
+    <mat-label>Article Image</mat-label>
+    <input id="articleImage-input" type="file" accept="image/*" (change)="generate_preview()" formControlName="articleImage">
+    <img priority ngSrc="{{data.articleImage}}" width="100" height="150" alt="bookCoverEdit">
+    <mat-form-field style="width: 0;height: 0">
       <mat-label>Article Title</mat-label>
-      <input matInput formControlName="title">
+      <input matInput formControlName="title" >
     </mat-form-field>
-    <mat-form-field style="width: 20rem">
+    <mat-form-field style="width: 0;height: 0">
       <mat-label>Article Preview</mat-label>
-      <input matInput formControlName="preview">
+      <input matInput formControlName="preview" >
     </mat-form-field>
-    <mat-form-field style="width: 20rem">
+    <mat-form-field style="width: 0;height: 0">
       <mat-label>Posted</mat-label>
       <input matInput [matDatepicker]="picker" formControlName="posted">
-      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-hint hidden="">MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-    <mat-form-field style="width: 20rem">
+    <mat-form-field style="width: 0;height: 0">
       <mat-label>Article Description</mat-label>
-      <textarea matInput formControlName="articleDescription"></textarea>
+      <textarea matInput formControlName="articleDescription" ></textarea>
     </mat-form-field>
-    <mat-form-field style="width: 20rem">
-      <mat-label>Genre</mat-label>
+    <mat-form-field style="width: 0;height: 0">
+      <mat-label>{{data.genre}}</mat-label>
       <mat-select formControlName="genreId">
         @for(genres of genre; track genres.id){
           <mat-option  [value]="genres.id">{{genres.genre}}</mat-option>
@@ -34,12 +38,15 @@
 
 
 
+
+
   </div>
   <div mat-dialog-actions>
     <button mat-raised-button (click)="closeAddArticleDialog()" >Cancel</button>
     <button mat-raised-button type="submit">Add Article</button>
   </div>
 </form>
+
 
 
 

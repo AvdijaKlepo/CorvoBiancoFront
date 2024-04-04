@@ -8,7 +8,7 @@ import {
   GetGenreResponse, GetHFBookResponse, GetSciFiBookResponse,
   GetSeriesResponse
 } from "./home-page.model";
-import {GetAuthorResponse} from "../author/author.models";
+import {GetAuthorResponse, GetAuthorResponseModel} from "../author/author.models";
 
 
 @Injectable({
@@ -120,12 +120,25 @@ export class HomePageService {
       `${this.apiUlr}GetAllArticles`
     );
   }
+  GetThreeArticle()
+  {
+    return this.httpClient.get<GetArticleResponse>(
+      `${this.apiUlr}GetThreeArticles`
+    );
+  }
 
   GetArticleDetails(id:number)
   {
     return this.httpClient.get<GetArticleResponseModel>
     (
       `${this.apiUlr}GetArticleDetail${id}`
+    )
+  }
+
+  GetAuthorDetails(id:number)
+  {
+    return this.httpClient.get<GetAuthorResponseModel>(
+      `${this.apiUlr}GetAuthorDetails${id}`
     )
   }
 
